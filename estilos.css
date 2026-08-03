@@ -1,0 +1,342 @@
+/* Importamos la tipografía Inter (muy usada en Figma para interfaces limpias) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #2D7A5D;      /* El verde principal de tus botones y selección */
+    --primary-light: #E8F3EF;      /* Fondo verde suave para ítems activos */
+    --bg-body: #F8F9FA;            /* Gris claro para el fondo general */
+    --bg-card: #FFFFFF;            /* Blanco para contenedores */
+    --text-main: #2D3748;          /* Gris oscuro para títulos y textos principales */
+    --text-muted: #718096;         /* Gris medio para descripciones o roles */
+    --border-color: #E2E8F0;       /* Gris muy suave para líneas divisorias */
+    --sidebar-width: 260px;        /* Ancho fijo del menú lateral */
+    --radius: 12px;                /* Bordes redondeados modernos */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Reset básico global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- MENÚ LATERAL (SIDEBAR) --- */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    margin-bottom: 8px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav a i {
+    font-size: 18px;
+    width: 24px;
+}
+
+/* Estado hover y página activa */
+.sidebar-nav a:hover, 
+.sidebar-nav a.active {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Información de Usuario y Logout */
+.sidebar-user {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.user-info {
+    margin-bottom: 12px;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.user-role {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #E53E3E;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+
+.logout-btn:hover {
+    color: #C53030;
+}
+
+
+/* --- CONTENIDO PRINCIPAL (MAIN CONTENT) --- */
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex-grow: 1;
+    padding: 40px;
+    background-color: var(--bg-body);
+}
+
+/* Barra Superior */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.topbar h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.topbar-welcome {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Contenedor interno */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Tarjeta de Bienvenida */
+.welcome-card {
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.welcome-card h2 {
+    font-size: 20px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.welcome-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* --- CUADRÍCULA DE ESTADÍSTICAS --- */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.stat-card {
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+/* Variaciones de color para los iconos de estadísticas */
+.icon-clientes { background-color: #EBF8FF; color: #2B6CB0; }
+.icon-mascotas { background-color: #FEFCBF; color: #B7791F; }
+.icon-citas { background-color: #E6F4EA; color: #1E8E3E; }
+
+.stat-info h3 {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+
+/* --- ESTILOS DE TABLAS MODERNAS (CRUD) Clientes --- */
+.table-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(226, 232, 240, 0.5);
+    overflow: hidden; /* Para que los bordes redondeados apliquen a la tabla */
+    width: 100%;
+}
+
+.main-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+}
+
+.main-table th {
+    background-color: #F1F5F9;
+    color: var(--text-main);
+    padding: 16px 20px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.main-table td {
+    padding: 16px 20px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+/* Efecto hover en las filas */
+.main-table tr:hover td {
+    background-color: #F8FAFC;
+}
+
+/* --- BOTONES MODERNOS --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-add {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-add:hover {
+    background-color: #236149;
+}
+
+/* Botones pequeños de acciones de la tabla */
+.btn-action {
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+.btn-edit {
+    background-color: #EBF8FF;
+    color: #2B6CB0;
+}
+
+.btn-edit:hover {
+    background-color: #BEE3F8;
+}
+
+.btn-delete {
+    background-color: #FFF5F5;
+    color: #C53030;
+}
+
+.btn-delete:hover {
+    background-color: #FED7D7;
+}
+
+/* --- BADGES (Etiquetas de estado, especies, etc.) --- */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 9999px;
+    text-transform: capitalize;
+}
+
+.badge-dog { background-color: #EBF8FF; color: #2B6CB0; }
+.badge-cat { background-color: #FAF5FF; color: #6B46C1; }
+.badge-other { background-color: #EDF2F7; color: #4A5568; }
